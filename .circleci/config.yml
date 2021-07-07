@@ -6,9 +6,9 @@ jobs:
       - image: cimg/node:14.16
     steps:
       - checkout
-      - run: echo 'export PREV_VERSION=$(git describe --tags --abbrev=0)' >> $BASH_ENV
+      - run: echo 'export PREV_VERSION='$(git describe --tags --abbrev=0) >> $BASH_ENV
       - run: GH_TOKEN=$GH_TOKEN npx semantic-release@17
-      - run: echo 'export CURR_VERSION=$(git describe --tags --abbrev=0)' >> $BASH_ENV
+      - run: echo 'export CURR_VERSION='$(git describe --tags --abbrev=0) >> $BASH_ENV
       - run: echo $PREV_VERSION
       - run: echo $CURR_VERSION
 
