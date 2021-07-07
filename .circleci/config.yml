@@ -6,15 +6,11 @@ jobs:
       - image: cimg/node:14.16
     steps:
       - checkout
-      - restore_cache:
-          keys:
-            - v1-deps-{{ checksum "package-lock.json" }}
-      - run: npm install
-      - save_cache:
-          key: v1-deps-{{ checksum "package-lock.json" }}
-          paths:
-            - node_modules
+      - run: echo 'export PREV_VERSION=$(git describe --tags --abbrev=0)' >> $BASH_ENV
       - run: GH_TOKEN=$GH_TOKEN npx semantic-release@17
+      - run: echo 'export CURR_VERSION=$(git describe --tags --abbrev=0)' >> $BASH_ENV
+      - run: echo $PREV_VERSION
+      - run: echo $CURR_VERSION
 
 workflows:
   version: 2
