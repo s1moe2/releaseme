@@ -5,6 +5,7 @@ const users = ['pong']
 
 const version = fs.readFileSync('./version')
 app.use('/zoo', (req, res) => res.status(200).send(version))
+app.use('/bar', (req, res) => res.status(200).send(version))
 
 app.use('/users', (req, res) => res.status(200).send(users))
 
