@@ -4,7 +4,7 @@ const app = express()
 const users = ['ping']
 
 const version = fs.readFileSync('./version')
-app.use('/', (req, res) => res.status(200).send(version))
+app.use('/zoo', (req, res) => res.status(200).send(version))
 
 app.use('/users', (req, res) => res.status(200).send(users))
 
