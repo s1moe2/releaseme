@@ -1,7 +1,7 @@
 const fs = require('fs')
 const express = require('express')
 const app = express()
-const users = ['ping']
+const users = ['pong']
 
 const version = fs.readFileSync('./version')
 app.use('/zoo', (req, res) => res.status(200).send(version))
